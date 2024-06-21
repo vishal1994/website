@@ -207,3 +207,11 @@ footer {
     background: #F1593F;
     box-shadow: 0 0 20px rgba(241, 89, 63, 0);
 }
+ 
+
+.sld:active {
+    background-color: #000000;
+    color: white;
+
+}
+ 

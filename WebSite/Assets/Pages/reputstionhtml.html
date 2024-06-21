@@ -1,0 +1,190 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    
+    .sidebar {
+        width: 250px;
+        background-color: #2c3e50;
+        color: white;
+        padding: 1em;
+    }
+    
+    .sidebar h2 {
+        text-align: center;
+    }
+    
+    .sidebar nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .sidebar nav ul li {
+        margin: 1em 0;
+    }
+    
+    .sidebar nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .sidebar nav ul li a.active {
+        font-weight: bold;
+    }
+    
+    .main-content {
+        flex: 1;
+        padding: 2em;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .filter-section {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        margin-bottom: 2em;
+    }
+    
+    .filter-section input,
+    .filter-section button {
+        padding: 0.5em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    .filter-section button {
+        background-color: #2980b9;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .review {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .review-content {
+        margin-top: 1em;
+    }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Restaverse</h2>
+        <nav>
+            <ul>
+                <li><a href="#business-overview">Business Overview & Analytics</a></li>
+                <li><a href="#reviews" class="active">Reviews & Reputation</a></li>
+                <li><a href="#sentiment-analysis">Sentiment Analysis</a></li>
+                <li><a href="#revenue-analysis">Dishwise Revenue & Rating Analysis</a></li>
+                <li><a href="#ticketing-system">Ticketing System</a></li>
+                <li><a href="#reporting">Reporting</a></li>
+                <li><a href="#discounts">Discounts</a></li>
+                <li><a href="#menu-management">Menu Management & Hygiene</a></li>
+                <li><a href="#digital-marketing">Digital Marketing</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Reputation Management</h1>
+            <div class="user-info">
+                <span>Akash Yadav</span>
+                <span>Admin</span>
+            </div>
+        </header>
+
+        <div class="filter-section">
+            <input type="text" id="date-range" placeholder="03-06-2024 to 21-06-2024">
+            <input type="text" id="restaurant" placeholder="Charcoal Eats - Biryani...">
+            <input type="text" id="city" placeholder="Select City">
+            <input type="text" id="platform" placeholder="Select Platform">
+            <input type="text" id="ratings" placeholder="Select Ratings">
+            <input type="text" id="resolved" placeholder="Select Resolved">
+            <input type="text" id="tags" placeholder="Select Tags">
+            <input type="text" id="secondary-tags" placeholder="Select Secondary tags">
+            <input type="text" id="review-type" placeholder="Select Review Type">
+            <button id="add-review">Add Review</button>
+        </div>
+
+        <div id="reviews-container">
+            <!-- Reviews will be dynamically added here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    fetchReviews();
+});
+
+function fetchReviews() {
+    const reviewsContainer = document.getElementById('reviews-container');
+
+    // Dummy data for demonstration
+    const reviews = [
+        {
+            date: '2024-06-21',
+            user: 'User1',
+            content: 'The Paratha was hard and so were the chicken pieces.',
+            restaurant: 'Charcoal Eats - Biryani & Be...',
+            location: 'Chembur',
+            platform: 'Delivery',
+            rating: 2
+        },
+        {
+            date: '2024-06-21',
+            user: 'Rahul Kondhalkar',
+            content: 'Amazing experience.',
+            restaurant: 'Charcoal Eats - Biryani & Be...',
+            location: 'Chembur',
+            platform: 'Delivery',
+            rating: 5
+        }
+    ];
+
+    reviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review';
+        reviewElement.innerHTML = `
+            <div class="review-header">
+                <strong>${review.restaurant}</strong>
+                <span>${review.date}</span>
+            </div>
+            <div class="review-content">
+                <p>${review.content}</p>
+                <small>${review.user} - ${review.location}</small>
+            </div>
+        `;
+        reviewsContainer.appendChild(reviewElement);
+    });
+}
+
+    </script>
+</body>
+</html>
+
